@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Variable is one of possible argument's type. It contains name of frame (LF/GF/TF) and variable name.
+ * Possible formats: LF@var1, TF@var, GF@foo
+ */
 class Variable implements Symbol
 {
     private string $name;
@@ -14,7 +18,6 @@ class Variable implements Symbol
         $this->name = $name;
         $this->frame = $frame;
     }
-
 
     public function can_be_used_as(DATA_TYPE $data_type): bool
     {

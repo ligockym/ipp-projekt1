@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Represents instruction with its opcode (type), arguments.
+ */
 class Instruction
 {
     private int $order;
@@ -12,7 +15,8 @@ class Instruction
 
 
     /**
-     * Tries to create an instruction from the whole line
+     * Creates an instruction from the whole line.
+     * If instruction is not valid, exit is returned.
      * @param string $line has to contain at least one non-white character (not space, nor tabulator)
      * @param INSTR_TYPE[] $allowed_label all instructions which can be labels
      */
@@ -25,13 +29,14 @@ class Instruction
 
         if (count($words) == 0) {
             // Error, empty instruction, skip, should never happen, because trimming is implemented
-            exit("Instruction error: Line is empty");
+            exit(ERR::SYNTAX_SEMANTICS_ERR->value);
         }
+
+        // INSTR_TYPE according to the first word
         $instruction_type = $this->what_instruction_type($words[0]);
 
         if ($instruction_type == null) {
             // did not find instruction, not a valid one
-            echo "Wrong op code for '$line'";
             exit(ERR::WRONG_OP_CODE->value);
         }
         $this->type = $instruction_type;
@@ -46,7 +51,6 @@ class Instruction
                 $can_be_label = in_array($instruction_type, $allowed_label) && $arg_i == 0;
                 $symbol = SymbolFactory::parse_and_create($arg, $can_be_label);
             } catch (Exception $exception) {
-                echo $exception->getMessage();
                 exit(ERR::SYNTAX_SEMANTICS_ERR->value);
             }
 
@@ -90,6 +94,10 @@ class Instruction
         return $this->args;
     }
 
+    /**
+     * Returns xml representation of Instruction and its symbols.
+     * @return string
+     */
     public function to_xml(): string
     {
         $xml_str = "";

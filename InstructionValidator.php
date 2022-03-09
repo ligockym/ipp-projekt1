@@ -1,9 +1,13 @@
 <?php
 
+/**
+ * InstructionValidator checks whether instruction satisfies one of saved formats.
+ */
 class InstructionValidator
 {
 
     /**
+     * Checks whether instruction is valid according to the instruction format.
      * @throws Exception
      */
     public static function validate(Instruction $instruction, InstructionFormat $instruction_format): void
@@ -14,7 +18,7 @@ class InstructionValidator
             throw new Exception("Type of instruction and its format does not match.");
         }
 
-        // Will throw an exception when wrong argument type.
+        // Will throw an exception when wrong argument type / number.
         // check number of arguments
         InstructionValidator::check_arg_count($instruction, $instruction_format);
         // check types of arguments

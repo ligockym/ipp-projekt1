@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Constant is one of possible argument's type. Possible formats: string, int, nil, bool.
+ **/
 class Type implements Symbol
 {
     private DATA_TYPE $type;

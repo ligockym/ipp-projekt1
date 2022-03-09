@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Label is one of possible argument's type. Possible formats: hello, label123...
+ */
 class Label implements Symbol
 {
     private string $name;

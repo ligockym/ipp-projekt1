@@ -1,13 +1,10 @@
 <?php
 
-enum SYMBOL_TYPE
-{
-    case VARIABLE;
-    case CONSTANT;
-    case LABEL;
-    case TYPE;
-}
 
+/**
+ * Symbol Factory is used for creating correct Symbol's implementation object.
+ * It parses string representation of symbol and evaluates correct type by regular expressions.
+ */
 class SymbolFactory
 {
     /**
@@ -23,6 +20,7 @@ class SymbolFactory
         $symbol_frame = ''; // in case of LF / TF / GF
         $symbol_value = ''; // name of variable / literal / number
 
+        // check if label
         if ($is_it_label && preg_match('/^([_\-$&%*!?a-zA-Z][_\-$&%*!?\w]*)$/', $expr)) {
             $symbol_type = DATA_TYPE::LABEL;
             $symbol_value = $expr; // for label use whole
