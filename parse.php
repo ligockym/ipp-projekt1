@@ -47,7 +47,7 @@ $instruction_formats = [
     new InstructionFormat(INSTR_TYPE::EQ, [DATA_TYPE::VAR], $datable_types_nil, $datable_types_nil, $second_third_same),
     new InstructionFormat(INSTR_TYPE::AND, [DATA_TYPE::VAR], [DATA_TYPE::BOOL], [DATA_TYPE::BOOL]),
     new InstructionFormat(INSTR_TYPE::OR, [DATA_TYPE::VAR], [DATA_TYPE::BOOL], [DATA_TYPE::BOOL]),
-    new InstructionFormat(INSTR_TYPE::NOT, [DATA_TYPE::VAR], [DATA_TYPE::BOOL], [DATA_TYPE::BOOL], $second_third_same),
+    new InstructionFormat(INSTR_TYPE::NOT, [DATA_TYPE::VAR], [DATA_TYPE::BOOL]),
     new InstructionFormat(INSTR_TYPE::INT2CHAR, [DATA_TYPE::VAR], [DATA_TYPE::INT]),
     new InstructionFormat(INSTR_TYPE::STRI2INT, [DATA_TYPE::VAR], [DATA_TYPE::STRING], [DATA_TYPE::INT]),
     new InstructionFormat(INSTR_TYPE::READ, [DATA_TYPE::VAR], [DATA_TYPE::TYPE]),
